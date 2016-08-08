@@ -12,5 +12,8 @@
     <description>Unofficial.</description>
     <tags>cache data grid</tags>
     <releaseNotes>http://www.oracle.com/technetwork/middleware/coherence/downloads/index.html</releaseNotes>
+	<dependencies>
+		<dependency id="Common.Logging" version="2.0.0" />
+	</dependencies>
   </metadata>
 </package>
