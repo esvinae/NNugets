@@ -3,11 +3,11 @@
   <metadata>
     <id>OracleCoherence</id>
     <version>12.2.1.1</version>
-    <title>Oracle Oracle for the Microsoft .NET Framework</title>
+    <title>Oracle Coherence for the Microsoft .NET Framework</title>
     <authors>Oracle</authors>
     <owners>Dzmitry Lahoda</owners>
     <licenseUrl>http://www.oracle.com/technetwork/licenses/wls-dev-license-1703567.html</licenseUrl>
-    <projectUrl>https://github.com/OpenSharp/NNugets/OracleCoherence</projectUrl>
+    <projectUrl>https://github.com/OpenSharp/NNugets/tree/master/OracleCoherence</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Unofficial.</description>
     <tags>cache data grid</tags>
