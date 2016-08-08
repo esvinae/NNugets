@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>OracleCoherence</id>
+    <version>12.2.1.1</version>
+    <title>Oracle Oracle for the Microsoft .NET Framework</title>
+    <authors>Oracle</authors>
+    <owners>Dzmitry Lahoda</owners>
+    <licenseUrl>http://www.oracle.com/technetwork/licenses/wls-dev-license-1703567.html</licenseUrl>
+    <projectUrl>https://github.com/OpenSharp/NNugets/OracleCoherence</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Unofficial.</description>
+    <tags>cache data grid</tags>
+    <releaseNotes>http://www.oracle.com/technetwork/middleware/coherence/downloads/index.html</releaseNotes>
+  </metadata>
+</package>

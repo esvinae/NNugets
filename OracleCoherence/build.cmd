@@ -1,0 +1,1 @@
+nuget pack packaging/OracleCoherence.nuspec
