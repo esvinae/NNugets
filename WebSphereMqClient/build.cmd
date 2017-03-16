@@ -1,1 +1,2 @@
-nuget pack packaging/WebSphereMqClient.nuspec
+mkdir build
+nuget pack packaging/WebSphereMqClient.nuspec -Output build

@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>0de4a31c-93d1-46c2-bceb-d98a6a773b0f</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>tests</RootNamespace>
+    <AssemblyName>NNugets</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFSharpCoreVersion>4.4.0.0</TargetFSharpCoreVersion>
+    <Name>NNugets</Name>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <Tailcalls>false</Tailcalls>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>3</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DocumentationFile>bin\Debug\tests.XML</DocumentationFile>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <Tailcalls>true</Tailcalls>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>3</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DocumentationFile>bin\Release\tests.XML</DocumentationFile>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
+  </PropertyGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '11.0'">
+      <PropertyGroup Condition="Exists('$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets')">
+        <FSharpTargetsPath>$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets</FSharpTargetsPath>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.Targets')">
+        <FSharpTargetsPath>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.Targets</FSharpTargetsPath>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  <Import Project="$(FSharpTargetsPath)" />
+  <ItemGroup>
+    <None Include="Program.fsx" />
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="amqmdmsg">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\amqmdmsg.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="amqmdnet">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\amqmdnet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="amqmdnm">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\amqmdnm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="amqmdnsp">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\amqmdnsp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="amqmdxcs">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\amqmdxcs.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBM.XMS">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\IBM.XMS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBM.XMS.Admin">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\IBM.XMS.Admin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBM.XMS.Admin.Objects">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\IBM.XMS.Admin.Objects.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBM.XMS.Client.Impl">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\IBM.XMS.Client.Impl.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBM.XMS.Client.WMQ">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\IBM.XMS.Client.WMQ.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBM.XMS.Comms">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\IBM.XMS.Comms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBM.XMS.Comms.RMM">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\IBM.XMS.Comms.RMM.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBM.XMS.Comms.SSL">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\IBM.XMS.Comms.SSL.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBM.XMS.Core">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\IBM.XMS.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBM.XMS.Formats.JMF">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\IBM.XMS.Formats.JMF.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBM.XMS.Formats.MFP">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\IBM.XMS.Formats.MFP.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBM.XMS.Impl">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\IBM.XMS.Impl.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBM.XMS.Match">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\IBM.XMS.Match.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBM.XMS.NLS">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\IBM.XMS.NLS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBM.XMS.Provider">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\IBM.XMS.Provider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBM.XMS.SIB">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\IBM.XMS.SIB.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBM.XMS.Util">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\IBM.XMS.Util.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBM.XMS.WMQI">
+      <HintPath>..\..\packages\WebSphereMqClient.8.0.0.6\lib\net20\IBM.XMS.WMQI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable">
+      <HintPath>..\..\packages\System.Collections.Immutable.1.3.1\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Reflection.Context" />
+    <Reference Include="System.Reflection.Metadata">
+      <HintPath>..\..\packages\System.Reflection.Metadata.1.4.2\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

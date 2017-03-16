@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>OracleCoherence</id>
-    <version>12.2.1.1</version>
+    <version>12.2.1.2</version>
     <title>Oracle Coherence for the Microsoft .NET Framework</title>
     <authors>Oracle</authors>
     <owners>Dzmitry Lahoda</owners>
@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/OpenSharp/NNugets/tree/master/OracleCoherence</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Unofficial.</description>
-    <tags>cache data grid</tags>
+    <tags>cache data grid event bus</tags>
     <releaseNotes>http://www.oracle.com/technetwork/middleware/coherence/downloads/index.html</releaseNotes>
 	<dependencies>
 		<dependency id="Common.Logging" version="2.0.0" />

@@ -2,14 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>WebSphereMqClient</id>
-    <version>8.0.0.5</version>
+    <version>8.0.0.6</version>
     <title>Managed IBM WebSphere MQ Client for .NET</title>
     <authors>IBM</authors>
     <owners>Dzmitry Lahoda</owners>
     <licenseUrl>http://www-01.ibm.com/support/docview.wss?uid=swg27045004</licenseUrl>
     <projectUrl>https://github.com/OpenSharp/NNugets/tree/master/WebSphereMqClient</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>Unofficial. Only managed `.dll`s with no `WCF`, `SOAP`, `WSDL` in names. No configurations, readme, texts, executables or scripts. Policy only for version 8.0+.</description>
+    <description>Unofficial. Only managed `.dll`s with no `WCF`, `SOAP`, `WSDL`, `policy` in names, no localizations folders, any that `System.Reflection.PortableExecutable.PEReader` fails to open and read Cor header. No configurations, readme, texts, executables or scripts. Policy only for version 8.0+.</description>
     <tags>messaging queue</tags>
     <releaseNotes>http://www-01.ibm.com/support/docview.wss?uid=swg27024064</releaseNotes>
   </metadata>

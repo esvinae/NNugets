@@ -5,7 +5,7 @@ Go to `c:\Program Files\IBM\WebSphere MQ\bin\`.
 
 Copy into `lib` next : 
 
-- Only managed `.dll`s with no `WCF`, `SOAP`, `WSDL` in names.
+- Unofficial. Only managed `.dll`s with no `WCF`, `SOAP`, `WSDL`, `policy` in names, no localizations folders, any that `System.Reflection.PortableExecutable.PEReader` fails to open and read Cor header.
 - No configurations, readme, texts, executables, scripts or other files. 
 - Policy only for version 8.0+.
 

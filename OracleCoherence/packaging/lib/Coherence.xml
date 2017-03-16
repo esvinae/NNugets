@@ -11272,6 +11272,28 @@
             If an I/O error occurs.
             </exception>
         </member>
+        <member name="M:Tangosol.Util.SerializationHelper.ConvertUTF(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Convert binary UTF-8 encode data to a String. This method is a helper
+            to allow various I/O implementations to share a single, efficient
+            implementation.
+            </summary>
+            <param name="ab">
+            an array of bytes containing UTF-8 encoded characters
+            </param>
+            <param name="of">
+            the offset into the array of the UTF-8 data to decode
+            </param>
+            <param name="cb">
+            the binary length in the array of the UTF-8 data to decode
+            </param>
+            <return>
+            a String value
+            </return>
+            <exception cref="T:System.IO.IOException">    
+            throws ArgumentException  if the UTF data is corrupt
+            </exception>
+        </member>
         <member name="M:Tangosol.Util.SerializationHelper.DecorateBinary(Tangosol.Util.Binary,System.Int32)">
             <summary>
             Decorate the specified <see cref="T:Tangosol.Util.Binary"/> with the specified integer decoration.
@@ -12913,6 +12935,30 @@
             <seealso cref="T:Tangosol.IO.DataReader"/>
             <author>Goran Milosavljevic  2006.08.09</author>
         </member>
+        <member name="F:Tangosol.IO.DataWriter.MIN_BUF">
+            <summary>
+            The minimum size of the temp buffer.
+            </summary>
+        </member>
+        <member name="F:Tangosol.IO.DataWriter.MAX_BUF">
+            <summary>
+            The maximum size of the temp buffer. The maximum size must be at least
+            <tt>(3 * CHAR_BUF_SIZE)</tt> to accomodate the worst-case UTF
+            formatting length.
+            </summary>
+        </member>
+        <member name="F:Tangosol.IO.DataWriter.CHAR_BUF_SIZE">
+            <summary>
+            Size of the temporary character buffer. Must be a power of 2.
+            Size is: 256 characters (.25 KB).        
+            </summary> 
+        </member>
+        <member name="F:Tangosol.IO.DataWriter.CHAR_BUF_MASK">
+            <summary>
+            Bitmask used against a raw offset to determine the offset within
+            the temporary character buffer.
+            </summary>
+        </member>
         <member name="M:Tangosol.IO.DataWriter.#ctor(System.IO.Stream)">
             <summary>
             Construct a new <b>DataWriter</b> that will write data to the
@@ -13085,6 +13131,88 @@
             <param name="text">
             A string to write.
             </param>
+        </member>
+        <member name="M:Tangosol.IO.DataWriter.CalcUTF(System.String)">
+            <summary>
+            Figure out how many bytes it will take to hold the passed String.
+            </summary>
+            <remarks>
+            This method is tightly bound to formatUTF.
+            </remarks>
+            <param  name="s">
+            the String
+            </param>
+            <return>
+            the binary UTF length
+            </return>
+        </member>
+        <member name="M:Tangosol.IO.DataWriter.FormatUTF(System.String)">
+            <summary>
+            Format the passed String as UTF into the passed byte array.
+            </summary>
+            <remarks>
+            This method is tightly bound to calcUTF.
+            </remarks>
+            <param name="s">
+            the string.
+            </param>
+            <returns>
+            The formated UTF byte array.
+            </returns>
+        </member>
+        <member name="M:Tangosol.IO.DataWriter.FormatUTF(System.Byte[],System.Int32,System.Char[],System.Int32)">
+            <summary>
+            Format the passed characters as UTF into the passed byte array.
+            </summary>
+            <param name="ab">
+            The byte array to format into.
+            </param>
+            <param name="ofb">
+            The offset into the byte array to write the first byte.
+            </param>
+            <param name="ach">
+            The array of characters to format.
+            </param>
+            <param name="cch">
+            The number of characters to format.
+            </param>
+            <return>
+            The number of bytes written to the array.
+            </return>
+        </member>
+        <member name="M:Tangosol.IO.DataWriter.Tmpbuf(System.Int32)">
+            <summary>
+             Get a buffer for formating data to bytes. Note that the resulting buffer
+             may be shorter than the requested size.
+             </summary>
+             <param name="cb">
+             the requested size for the buffer
+             </param>
+             <return>
+             A byte array that is at least <tt>cb</tt> bytes long, but not
+             shorter than <see cref="F:Tangosol.IO.DataWriter.MIN_BUF"/> and (regardless of the value of
+             <tt>cb</tt>) not longer than <see cref="F:Tangosol.IO.DataWriter.MAX_BUF"/>.
+             </return>
+        </member>
+        <member name="F:Tangosol.IO.DataWriter.m_abBuf">
+            <summary>
+            A temp buffer to use for building the data to write.
+            </summary>
+        </member>
+        <member name="F:Tangosol.IO.DataWriter.m_achBuf">
+            <summary>
+            A lazily instantiated temp buffer used to avoid allocations from
+            and repeated calls to String functions.
+            </summary>
+        </member>
+        <member name="P:Tangosol.IO.DataWriter.CharBuf">
+            <summary>
+            Obtain a temp buffer used to avoid allocations from
+            repeated calls to String APIs.
+            </summary>
+            <return>
+            a char buffer of CHAR_BUF_SIZE characters long
+            </return>
         </member>
         <member name="T:Tangosol.IO.IWrapperStreamFactory">
             <summary>
@@ -42270,6 +42398,16 @@
             An <b>IChannel</b> that was disassociated with this IReceiver.
             </param>
         </member>
+        <member name="M:Tangosol.Net.Messaging.IReceiver.OnChannelClosed(Tangosol.Net.Messaging.IChannel)">
+            <summary>
+            Notify this IReceiver that the <b>IChannel</b> it was associated with has
+            been closed.
+            </summary>
+            <param name="channel">
+            An <b>IChannel</b> that was associated with this IReceiver.
+            </param>
+            <since>12.2.1.2.0</since>
+        </member>
         <member name="P:Tangosol.Net.Messaging.IReceiver.Name">
             <summary>
             The name of this IReceiver.
@@ -43044,6 +43182,16 @@
             An unsolicited <b>IMessage</b> received by a registered
             <b>IChannel</b>.
             </param>
+        </member>
+        <member name="M:Tangosol.Net.Impl.RemoteNamedCache.OnChannelClosed(Tangosol.Net.Messaging.IChannel)">
+            <summary>
+            Notify this IReceiver that the <b>IChannel</b> it was associated with has
+            been closed.
+            </summary>
+            <param name="channel">
+            An <b>IChannel</b> that was associated with this IReceiver.
+            </param>
+            <since>12.2.1.2.0</since>
         </member>
         <member name="M:Tangosol.Net.Impl.RemoteNamedCache.OnInit">
             <summary>
@@ -68473,7 +68621,7 @@
             A new <b>Connection</b> object that has yet to be opened.
             </returns>
         </member>
-        <member name="M:Tangosol.Util.Daemon.QueueProcessor.Service.Peer.Peer.OnChannelClosed(Tangosol.Net.Messaging.Impl.Channel)">
+        <member name="M:Tangosol.Util.Daemon.QueueProcessor.Service.Peer.Peer.OnChannelClosed(Tangosol.Net.Messaging.IChannel)">
             <summary>
             Called after a <see cref="T:Tangosol.Net.Messaging.Impl.Channel"/> has been closed.
             </summary>
