@@ -12,3 +12,8 @@ Copy into `lib` next :
 From `c:\Program Files\IBM\WebSphere MQ\bin\symbols\dll\` copy into `lib` only symbols for copied assemblies.
 
 Run `build.cmd`
+
+Todo
+---
+
+Add sample application to call MQ

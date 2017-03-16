@@ -25,6 +25,7 @@ let isManaged (name:string) =
 
 let ibmFiles = Directory.GetFiles(ibmInstallation, "*.dll") |> Seq.where (fun x-> containsSubstring(x).Any() = false && isManaged(x) && x.Contains(".dll"))
 
+//// TODO: fix copying pdb and xml
 let pdbs = ibmFiles |> Seq.map (fun x-> x.Replace(".dll",".pdb")) |> Seq.where (fun x-> File.Exists(x))
 let xmls = ibmFiles |> Seq.map (fun x-> x.Replace(".dll",".xml")) |> Seq.where (fun x-> File.Exists(x))
 
